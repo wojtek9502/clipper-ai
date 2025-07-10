@@ -11,3 +11,28 @@ services:
     tty: true
     restart: always
     entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+    networks:
+      - ollama-network
+#    deploy:
+#     resources:
+#       reservations:
+#         devices:
+#           - driver: nvidia
+#             count: all
+#             capabilities: [gpu]
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - ./volumes/webgui:/app/backend/data
+    networks:
+      - ollama-network
+
+networks:
+  ollama-network:
+    driver: bridge
+    name: ollama-network

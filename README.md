@@ -12,14 +12,13 @@ uv sync
 ```
 
 ## Config
-Create .env file See '.env.example' file
+- Create .env file See '.env.example' file
 
-## Run Ollama docker container
+
+## Run Ollama docker container and WebUI
 ```shell
 docker-compose up --build -d
 ```
 
-## Run
-```shell
-python main.py
-```
+# Run
+go to http://localhost:3000
